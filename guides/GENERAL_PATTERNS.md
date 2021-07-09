@@ -171,3 +171,41 @@ This is straightforward and clear.
   Some text
 </h6>
 ```
+
+## Only comment when absolutely necessary
+
+Comments tend to make code less readable. If your code is not understandable
+without comments, it may need to be refactored.
+
+Comments should only be added when something _really_ weird is happening in the
+code, and you can't avoid it. For example, something is broken in React itself,
+and you need to work around it. The code could be confusing for future readers,
+so you add a comment clarifying why something weird is happening.
+
+If you think you need a comment, first ask:
+
+Could I refactor this code to avoid adding a comment?
+
+Could this comment instead go in the commit message?
+
+Could I instead just add a name? For example:
+
+### Don't ⛔️
+
+```typescript
+// Check if the user is authenticated, if they are currently editing, and
+whether the page is loading, before allowing the user to do something
+if (isAuthenticated && isAdmin && !loading) {
+  doSomething()
+}
+```
+
+### Do ✅
+
+```typescript
+const canUserEdit = isAuthenticated && isAdmin && !loading
+
+if (canUserEdit) {
+  doSomething()
+}
+```
