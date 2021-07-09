@@ -84,11 +84,13 @@ const Component = () => {
 ### Don't ⛔️
 
 ```typescript
-<button onClick={e => {
-  if (foo) {
-    doSomething(e.currentTarget)
-  }
-}}>
+<button
+  onClick={(e) => {
+    if (foo) {
+      doSomething(e.currentTarget);
+    }
+  }}
+>
   Do Something
 </button>
 ```
@@ -97,18 +99,14 @@ const Component = () => {
 
 ```typescript
 const Component = () => {
-  const handleOnClickDoSomething = e => {
+  const handleOnClickDoSomething = (e) => {
     if (foo) {
-      doSomething(e.currentTarget)
+      doSomething(e.currentTarget);
     }
-  }
+  };
 
-  return (
-    <button onClick={handleOnClickDoSomething}>
-      Do Something
-    </button>
-  )
-}
+  return <button onClick={handleOnClickDoSomething}>Do Something</button>;
+};
 ```
 
 ## Use consistent structure for function component definition and props
@@ -119,12 +117,12 @@ This is a bit hard to process.
 
 ```typescript
 type Props = {
-  foo: number
-  bar: string
-}
+  foo: number;
+  bar: string;
+};
 
 function Component(props: Props) {
-  const { foo, bar } = props
+  const { foo, bar } = props;
 
   // ...
 }
@@ -136,13 +134,13 @@ This is more readable and straightforward.
 
 ```typescript
 interface ComponentProps {
-  foo: number
-  bar: string
+  foo: number;
+  bar: string;
 }
 
 const Component: FC<ComponentProps> = ({ foo, bar }) => {
   // ...
-}
+};
 ```
 
 ## Use arrow functions
@@ -157,9 +155,7 @@ This abstraction isn't too helpful and provides an unnecessary layer of
 indirection.
 
 ```typescript
-<Typography variant="h6">
-  Some text
-</Typography>
+<Typography variant="h6">Some text</Typography>
 ```
 
 ### Do ✅
@@ -167,9 +163,7 @@ indirection.
 This is straightforward and clear.
 
 ```typescript
-<h6>
-  Some text
-</h6>
+<h6>Some text</h6>
 ```
 
 ## Only comment when absolutely necessary
@@ -194,18 +188,18 @@ Could I instead just add a name? For example:
 
 ```typescript
 // Check if the user is authenticated, if they are currently editing, and
-whether the page is loading, before allowing the user to do something
+// whether the page is loading, before allowing the user to do something
 if (isAuthenticated && isAdmin && !loading) {
-  doSomething()
+  doSomething();
 }
 ```
 
 ### Do ✅
 
 ```typescript
-const canUserEdit = isAuthenticated && isAdmin && !loading
+const canUserEdit = isAuthenticated && isAdmin && !loading;
 
 if (canUserEdit) {
-  doSomething()
+  doSomething();
 }
 ```
