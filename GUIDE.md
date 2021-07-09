@@ -4,18 +4,18 @@
 
 ### Avoid conflating view layer logic with styling
 
-#### Don't
+#### Don't ⛔️
 
 This is a common pattern in MaterialUI and should be avoided.
 
 ```typescript
 <div>
-  <Hidden mdUp>// Some component</Hidden>
-  <Hidden mdDown>// Some component</Hidden>
+  <Hidden mdUp>/*Some component*/</Hidden>
+  <Hidden mdDown>/* Some component*/</Hidden>
 </div>
 ```
 
-#### Do
+#### Do ✅
 
 This pattern uses TailwindCSS and maintains better separation between the view
 and its styling
@@ -29,7 +29,7 @@ and its styling
 
 ### Organize component structures consistently
 
-#### Don't
+#### Don't ⛔️
 
 This is really hard to read.
 
@@ -51,7 +51,7 @@ const Component = () => {
 }
 ```
 
-#### Do
+#### Do ✅
 
 Consistent organization makes it easier for other developers to understand the
 code.
@@ -84,7 +84,7 @@ const Component = () => {
 
 ### Avoid inline handlers
 
-#### Don't
+#### Don't ⛔️
 
 ```typescript
 <button onClick={e => {
@@ -96,7 +96,7 @@ const Component = () => {
 </button>
 ```
 
-#### Do
+#### Do ✅
 
 ```typescript
 const Component = () => {
@@ -116,7 +116,7 @@ const Component = () => {
 
 ### Use consistent structure for function component definition and props
 
-#### Don't
+#### Don't ⛔️
 
 This is a bit hard to process.
 
@@ -133,7 +133,7 @@ function Component(props: Props) {
 }
 ```
 
-#### Do
+#### Do ✅
 
 This is more readable and straightforward.
 
@@ -154,7 +154,7 @@ For consistency and readability.
 
 ### Use bare html wherever possible
 
-#### Don't
+#### Don't ⛔️
 
 This abstraction isn't too helpful and provides an unnecessary layer of
 indirection.
@@ -165,7 +165,7 @@ indirection.
 </Typography>
 ```
 
-#### Do
+#### Do ✅
 
 This is straightforward and clear.
 
