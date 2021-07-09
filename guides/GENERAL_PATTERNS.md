@@ -1,10 +1,8 @@
-# Guide
+# General Patterns
 
-## General Patterns
+## Avoid conflating view layer logic with styling
 
-### Avoid conflating view layer logic with styling
-
-#### Don't ⛔️
+### Don't ⛔️
 
 This is a common pattern in MaterialUI and should be avoided.
 
@@ -15,7 +13,7 @@ This is a common pattern in MaterialUI and should be avoided.
 </div>
 ```
 
-#### Do ✅
+### Do ✅
 
 This pattern uses TailwindCSS and maintains better separation between the view
 and its styling
@@ -27,9 +25,9 @@ and its styling
 </div>
 ```
 
-### Organize component structures consistently
+## Organize component structures consistently
 
-#### Don't ⛔️
+### Don't ⛔️
 
 This is really hard to read.
 
@@ -51,7 +49,7 @@ const Component = () => {
 }
 ```
 
-#### Do ✅
+### Do ✅
 
 Consistent organization makes it easier for other developers to understand the
 code.
@@ -75,16 +73,15 @@ const Component = () => {
     dispatch(doSomething())
   }
 
-
   return (
     // Some views
   )
 }
 ```
 
-### Avoid inline handlers
+## Avoid inline handlers
 
-#### Don't ⛔️
+### Don't ⛔️
 
 ```typescript
 <button onClick={e => {
@@ -96,7 +93,7 @@ const Component = () => {
 </button>
 ```
 
-#### Do ✅
+### Do ✅
 
 ```typescript
 const Component = () => {
@@ -114,9 +111,9 @@ const Component = () => {
 }
 ```
 
-### Use consistent structure for function component definition and props
+## Use consistent structure for function component definition and props
 
-#### Don't ⛔️
+### Don't ⛔️
 
 This is a bit hard to process.
 
@@ -133,7 +130,7 @@ function Component(props: Props) {
 }
 ```
 
-#### Do ✅
+### Do ✅
 
 This is more readable and straightforward.
 
@@ -148,13 +145,13 @@ const Component: FC<ComponentProps> = ({ foo, bar }) => {
 }
 ```
 
-### Use arrow functions
+## Use arrow functions
 
 For consistency and readability.
 
-### Use bare html wherever possible
+## Use bare html wherever possible
 
-#### Don't ⛔️
+### Don't ⛔️
 
 This abstraction isn't too helpful and provides an unnecessary layer of
 indirection.
@@ -165,7 +162,7 @@ indirection.
 </Typography>
 ```
 
-#### Do ✅
+### Do ✅
 
 This is straightforward and clear.
 
@@ -174,27 +171,3 @@ This is straightforward and clear.
   Some text
 </h6>
 ```
-
-## TypeScript
-
-### Avoid casting unless absolutely necessary
-
-It makes code harder to understand, less predictable, and less dependable. It
-also forces the next developer to verify that the cast isn't breaking anything.
-What if you do something like `x as User`, but the type of `x` isn't actually
-`User` for some reason?
-
-### Avoid using "any"
-
-If you really don't know what a thing is, use "unknown" instead
-
-## Tooling
-
-Here are the tools we use.
-
-- [ESLint](https://eslint.org/)
-- [Prettier](https://prettier.io/)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Husky](https://github.com/typicode/husky)
-- [Jest](https://jestjs.io/)
-- [Cypress](https://www.cypress.io/)
